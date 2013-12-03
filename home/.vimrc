@@ -22,7 +22,6 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'myusuf3/numbers.vim'
 Bundle 'chriskempson/base16-vim'
 Bundle 'Valloric/YouCompleteMe'
-Bundle 'Lokaltog/vim-powerline'
 Bundle 'spf13/PIV'
 Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/syntastic'
@@ -36,7 +35,17 @@ Bundle 'tpope/vim-unimpaired'
 Bundle 'SirVer/ultisnips'
 Bundle 'tpope/vim-markdown'
 Bundle 'godlygeek/tabular'
-Bundle 'mattn/zencoding-vim'
+Bundle 'mattn/emmet-vim'
+Bundle 'mileszs/ack.vim'
+Bundle 'editorconfig-vim'
+Bundle 'groenewege/vim-less'
+Bundle 'skammer/vim-css-color'
+Bundle 'hail2u/vim-css3-syntax'
+Bundle 'nono/vim-handlebars'
+Bundle 'Solarized'
+Bundle 'jacekd/vim-iawriter'
+Bundle 'markabe/vim-jira-open'
+Bundle 'matchit.zip'
 
 " General settings
 set history=1000
@@ -65,7 +74,7 @@ set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic white
 set laststatus=2   " Always show the statusline
 
 " NERDTree toggle
-nnoremap <leader>e :NERDTree<CR>
+nnoremap <leader>e :NERDTreeToggle<CR>
 let NERDTreeShowBookmarks=1
 let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
 let NERDTreeChDirMode=0
@@ -88,7 +97,7 @@ set expandtab
 set comments=s1:/**,mb:*,ex:*/,s1:/*,mb:*,ex:*/
 set formatoptions+=ro
 autocmd FileType php,javascript,xml,yml autocmd BufWritePre <buffer> call StripTrailingWhitespace()
-
+autocmd FileType javascript,html setlocal shiftwidth=2 tabstop=2 softtabstop=2 smarttab smartindent
 " Fast Tabs
 map <S-H> gT
 map <S-L> gt
@@ -112,13 +121,13 @@ nnoremap <leader>gc :Gcommit<CR>
 " WD in current file
 cmap cwd lcd %:p:h
 cmap cd. lcd %:p:h
-autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
+" autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
 " Edit mode mappings from vimcasts
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
-map <leader>ew :e %%
-map <leader>es :sp %%
-map <leader>ev :vsp %%
-map <leader>et :tabe %%
+map <leader>ow :e %%
+map <leader>os :sp %%
+map <leader>ov :vsp %%
+map <leader>ot :tabe %%
 
 " Functions
 " Strip whitespace {
@@ -146,7 +155,7 @@ let g:Powerline_symbols = 'fancy'
 
 " Ultisnips triggers
 let g:UltiSnipsExpandTrigger = "<c-j>"
-let g:snippet_author = "Sebastian Pleschko <sebastian.pleschko@finanzcheck.de>"
+let g:snippet_author = "Sebastian Pleschko <sebastian.pleschko@antevorte.org>"
 
 " Keybinding for foldlevels
 
@@ -159,3 +168,24 @@ nnoremap <leader>f5 :set foldlevel=5<CR>
 
 " Save file as root 
 noremap <leader>W :w !sudo tee % > /dev/null<CR>
+
+" Next window
+nnoremap ]w <C-w>w
+nnoremap [w <C-w>W
+
+" Syntastic
+let g:syntastic_always_populate_loc_list=1
+" Getter/setter macro
+let @g='^f$lyw]}O    public function 0crmigetA(){    return $this->0;}public function 0crmisetA($0){    $this->0 = $0;}'
+
+" Save mapping
+nnoremap <C-s> :w<CR>
+inoremap <C-s> <C-[>:w<CR>i
+
+filetype off
+filetype plugin indent off
+set runtimepath+=/usr/local/opt/go/vim
+filetype plugin indent on
+syntax on
+" Jira plugin
+let g:jira_browse_url = 'http://jira.antevortenet.de/browse/'

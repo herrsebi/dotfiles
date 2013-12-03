@@ -1,4 +1,9 @@
-set guifont=Source\ Code\ Pro\ For\ Powerline:h14
-set transparency=5
+set guifont=Source\ Code\ Pro\ for\ Powerline:h16
 set background=dark
-colorscheme base16-default
+colorscheme solarized
+" Powerline via pip 
+if has('gui')
+    python from powerline.vim import setup as powerline_setup
+    python powerline_setup()
+    python del powerline_setup
+endif
