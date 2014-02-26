@@ -46,6 +46,7 @@ Bundle 'Solarized'
 Bundle 'jacekd/vim-iawriter'
 Bundle 'markabe/vim-jira-open'
 Bundle 'matchit.zip'
+Bundle 'joonty/vdebug.git'
 
 " General settings
 set history=1000
@@ -189,3 +190,5 @@ filetype plugin indent on
 syntax on
 " Jira plugin
 let g:jira_browse_url = 'http://jira.antevortenet.de/browse/'
+" Syntastic
+let g:syntastic_php_checkers = ['php', 'phpcs']
