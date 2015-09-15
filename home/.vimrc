@@ -9,7 +9,7 @@ filetype off                   " required!
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-let mapleader = ","
+let mapleader = "\<Space>"
 
 " let Vundle manage Vundle
 " required! 
@@ -22,7 +22,6 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'myusuf3/numbers.vim'
 Bundle 'chriskempson/base16-vim'
 Bundle 'Valloric/YouCompleteMe'
-Bundle 'spf13/PIV'
 Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/syntastic'
 Bundle 'airblade/vim-gitgutter'
@@ -47,6 +46,16 @@ Bundle 'jacekd/vim-iawriter'
 Bundle 'markabe/vim-jira-open'
 Bundle 'matchit.zip'
 Bundle 'joonty/vdebug.git'
+Bundle 'bling/vim-airline'
+Bundle 'junegunn/goyo.vim'
+Bundle 'LaTeX-Suite-aka-Vim-LaTeX'
+Bundle 'nsf/gocode'
+Bundle 'dgryski/vim-godef'
+Bundle 'confluencewiki.vim'
+Bundle 'rust-lang/rust.vim'
+Bundle 'terryma/vim-expand-region'
+Bundle 'wakatime/vim-wakatime'
+Bundle 'pthrasher/conqueterm-vim'
 
 " General settings
 set history=1000
@@ -103,7 +112,7 @@ autocmd FileType javascript,html setlocal shiftwidth=2 tabstop=2 softtabstop=2 s
 map <S-H> gT
 map <S-L> gt
 
-" Turn off the annoying bell
+"  Turn off the annoying bell
 set vb
 
 " Serch highlighting
@@ -169,6 +178,7 @@ nnoremap <leader>f5 :set foldlevel=5<CR>
 
 " Save file as root 
 noremap <leader>W :w !sudo tee % > /dev/null<CR>
+noremap <leader>w :w<CR>
 
 " Next window
 nnoremap ]w <C-w>w
@@ -185,10 +195,49 @@ inoremap <C-s> <C-[>:w<CR>i
 
 filetype off
 filetype plugin indent off
-set runtimepath+=/usr/local/opt/go/vim
+set runtimepath+=/Users/spleschko/vim-golang
 filetype plugin indent on
 syntax on
+" Correct go formatting
+autocmd FileType go setlocal noexpandtab shiftwidth=4 tabstop=4 softtabstop=4
+
 " Jira plugin
 let g:jira_browse_url = 'http://jira.antevortenet.de/browse/'
 " Syntastic
 let g:syntastic_php_checkers = ['php', 'phpcs']
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+    \ }
+
+" Diff Options
+set diffopt=filler,vertical,iwhite,icase
+
+" Vim Productivity tips http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
+nmap <Leader><Leader> V
+
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)

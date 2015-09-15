@@ -5,11 +5,15 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="agnoster"
+ZSH_THEME="ys"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+#alias qt1=curl -XPOST http://ant-tracking1.n.collins.kg:9200/tracking/_search -d 
+#alias qfp1=curl -XPOST http://ant-tracking1.n.collins.kg:9200/fp_to_userid/_search -d
+
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -36,9 +40,23 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 #export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
 alias -g gs='git st'
+alias -g G='| grep'
+alias -g L='| less'
+alias -g RMQ=' -L 15672:localhost:15672'
+
+export HOMEBREW_GITHUB_API_TOKEN='6c43dd0dd2af25a46bcb973e5fb97f087b274ec3'
+
+export GOPATH=/Users/spleschko/Documents/work/go
+#
+
+## Hadoop Shizzle
+export HADOOP_HOME="/Users/spleschko/hadoop-2.3.0"
+export SPARK_HOME="/Users/spleschko/spark-1.1.0"
+export YARN_CONF_DIR="/Users/spleschko/Documents/work/yarn-conf"
+export HADOOP_CONF_DIR="/Users/spleschko/Documents/work/hadoop-conf"
+
+### Added heroku, rvm and gotools
+export PATH="$HADOOP_HOME/bin:$SPARK_HOME/bin:/usr/local/heroku/bin:$PATH:$HOME/.rvm/bin:$GOPATH/bin"
+
+
