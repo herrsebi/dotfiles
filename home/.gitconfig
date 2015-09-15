@@ -1,0 +1,10 @@
+[alias]
+	st = status -sb
+	lg = log --all --pretty='format:%d %Cgreen%h%Creset %an - %s' --graph
+[user]
+	name = Sebastian Pleschko
+	email = sebastian.pleschko@antevorte.org
+[init]
+	templatedir = ~/.git_template
+[push]
+	default = simple
