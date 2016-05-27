@@ -1,0 +1,26 @@
+IMAPAccount gmail
+Host imap.gmail.com
+User sebastian.pleschko@gmail.com
+PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.mailpass.gpg"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore gmail-remote
+Account gmail
+
+MaildirStore gmail-local
+Path ~/.mail/gmail/
+Inbox ~/.mail/gmail/Inbox
+AltMap no
+Flatten .
+
+
+Channel gmail
+Master :gmail-remote:
+Slave :gmail-local:
+Patterns * !"[Gmail]/All Mail" !"[Gmail]/Important"
+Create Both
+SyncState *
+Remove Both
+
+
