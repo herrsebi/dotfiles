@@ -1,26 +1,35 @@
 # Synced Mailboxed
 
-set folder = ~/.mail
+set folder = ~/mail
 set mbox_type = Maildir
-set spoolfile = +gmail/Inbox
+set record = +Sent
+set copy = yes
+set postponed = +Drafts
+set spoolfile = +Inbox
 set alias_file       = ~/.mutt/alias         # where to store aliases
 set header_cache     = ~/.mutt/cache/headers # where to store headers
 set message_cachedir = ~/.mutt/cache/bodies  # where to store bodies
 set certificate_file = ~/.mutt/certificates  # where to store certs
 set mailcap_path     = ~/.mutt/mailcap       # entries for filetypes
 set tmpdir           = ~/.mutt/temp          # where to keep temp files
-set signature        = ~/.mutt/sig           # my signature file
+set signature        = ~/.mutt/signature     # my signature file
 
 set sort = threads
 set sort_aux = reverse-last-date-received
 
 set realname = 'Sebastian Pleschko'
-set from = 'sebastian.pleschko@gmail.com'
+set from = 's.pleschko@rewe-group.at'
 set use_from = yes
+
+set edit_headers = yes
+set sendmail="/usr/bin/msmtp -a exchange"
 
 set editor = vim
 
 source /home/spleschko/.mutt/colors
+
+set query_command="echo;notmuch address from:'%s*' and not jira and not confluence"
+bind editor <Tab> complete-query
 
 # Vim movements
 
@@ -33,11 +42,13 @@ bind pager G bottom
 bind attach,index gg first-entry
 bind attach,index G last-entry
 
+bind index R group-reply
+
 alternative_order text/plain text/html
 auto_view text/html
 
-macro index o "<shell-escape>mbsync gmail:Inbox<enter>" "fetch inbox mails"
-macro index O "<shell-escape>mbsync gmail<enter>" "fetch all mails"
+macro index o "<shell-escape>mbsync exchange:INBOX & notmuch new<enter>" "fetch inbox mails"
+macro index O "<shell-escape>mbsync exchange & notmuch new<enter>" "fetch all mails"
 
 macro index <F8> \
 "<enter-command>set my_old_pipe_decode=\$pipe_decode my_old_wait_key=\$wait_key nopipe_decode nowait_key<enter>\
@@ -58,3 +69,13 @@ macro index <F6> \
 <pipe-message>notmuch-mutt tag -- -inbox<enter>\
 <enter-command>set pipe_decode=\$my_old_pipe_decode wait_key=\$my_old_wait_key<enter>" \
 	 "notmuch: remove message from inbox"
+
+# GPG Shizzle
+
+source ~/.mutt/gpg.rc
+
+set pgp_use_gpg_agent = yes
+set pgp_timeout = 3600
+set crypt_autosign = yes
+set crypt_replyencrypt = yes
+set crypt_verify_sig = yes

@@ -44,10 +44,10 @@ mono  error         bold
 
 # index ----------------------------------------------------------------
 
-#color index         color160        color234        "~D(!~p|~p)"               # deleted
-#color index         color235        color234        ~F                         # flagged
-#color index         color166        color234        ~=                         # duplicate messages
-#color index         color240        color234        "~A!~N!~T!~p!~Q!~F!~D!~P"  # the rest
+color index         color160        color234        "~D(!~p|~p)"               # deleted
+color index         color235        color234        ~F                         # flagged
+color index         color166        color234        ~=                         # duplicate messages
+color index         color240        color234        "~A!~N!~T!~p!~Q!~F!~D!~P"  # the rest
 #color index         J_base          color234        "~A~N!~T!~p!~Q!~F!~D"      # the rest, new
 color index         color160        color234        "~A"                        # all messages
 color index         color166        color234        "~E"                        # expired messages
@@ -88,8 +88,8 @@ color index         color136        color160        "~v~(~D)"                   
 # message headers ------------------------------------------------------
 
 #color header        color240        color234        "^"
-color hdrdefault    color240        color234        
-color header        color241        color234        "^(From)"
+color hdrdefault    color166        color234        
+color header        color125        color234        "^(From)"
 color header        color33         color234        "^(Subject)"
 
 # body -----------------------------------------------------------------
@@ -143,7 +143,7 @@ color body          color160        color234        "([a-z][a-z0-9+-]*://(((([a-
 #mono body          underline                       "(^|[[:space:][:punct:]])/[^/]+/([[:space:][:punct:]]|$)"
 
 # Border lines.
-#color body          color33         color234        "( *[-+=#*~_]){6,}"
+color body          color33         color234        "( *[-+=#*~_]){6,}"
 
 #folder-hook .                  "color status        J_black         J_status        "
 #folder-hook gmail/inbox        "color status        J_black         color136        "

@@ -1,26 +1,50 @@
-IMAPAccount gmail
-Host imap.gmail.com
-User sebastian.pleschko@gmail.com
+IMAPAccount exchange
+Host saut0018.rewe-aut.1tld.biz
+User REWE-AUT\\AT0697674
 PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.mailpass.gpg"
 SSLType IMAPS
-CertificateFile /etc/ssl/certs/ca-certificates.crt
+CertificateFile ~/.rewecert.pem
 
-IMAPStore gmail-remote
-Account gmail
+IMAPAccount exchange-dav
+Host localhost
+Port 1143
+SSLType None
+AuthMechs LOGIN
+User REWE-AUT\\AT0697674
+PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.mailpass.gpg"
 
-MaildirStore gmail-local
-Path ~/.mail/gmail/
-Inbox ~/.mail/gmail/Inbox
+IMAPStore exchange-remote
+Account exchange-dav
+
+MaildirStore exchange-local
+Path ~/mail/
+Inbox ~/mail/Inbox
 AltMap no
 Flatten .
 
-
-Channel gmail
-Master :gmail-remote:
-Slave :gmail-local:
-Patterns * !"[Gmail]/All Mail" !"[Gmail]/Important"
+Channel exchange
+Master :exchange-remote:
+Slave :exchange-local:
+Patterns *
 Create Both
 SyncState *
 Remove Both
 
 
+
+IMAPStore exchange-dav-rem
+Account exchange-dav
+
+MaildirStore exchange-dav-local
+Path ~/mail/
+Inbox ~/mail/Inbox
+AltMap no
+Flatten .
+
+Channel exchange-dav
+Master :exchange-dav-rem:
+Slave :exchange-dav-local:
+Patterns *
+Create Both
+SyncState *
+Remove Both
