@@ -13,12 +13,27 @@ AuthMechs LOGIN
 User REWE-AUT\\AT0697674
 PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.mailpass.gpg"
 
+IMAPAccount gmail
+Host imap.gmail.com
+Port 993
+User sebastian.pleschko@riag-digital.com
+PassCmd "pass Web/google.com"
+
 IMAPStore exchange-remote
 Account exchange-dav
+
+IMAPStore gmail-remote
+Account gmail
 
 MaildirStore exchange-local
 Path ~/mail/
 Inbox ~/mail/Inbox
+AltMap no
+Flatten .
+
+MaildirStore gm-local
+Path ~/gmail/
+Inbox ~/gmail/Inbox
 AltMap no
 Flatten .
 
@@ -30,21 +45,11 @@ Create Both
 SyncState *
 Remove Both
 
-
-
-IMAPStore exchange-dav-rem
-Account exchange-dav
-
-MaildirStore exchange-dav-local
-Path ~/mail/
-Inbox ~/mail/Inbox
-AltMap no
-Flatten .
-
-Channel exchange-dav
-Master :exchange-dav-rem:
-Slave :exchange-dav-local:
+Channel gmail
+Master :gmail-remote:
+Slave :gm-local:
 Patterns *
-Create Both
+Create Slave
 SyncState *
-Remove Both
+Remove Slave
+

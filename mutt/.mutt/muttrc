@@ -16,6 +16,9 @@ set signature        = ~/.mutt/signature     # my signature file
 
 set sort = threads
 set sort_aux = reverse-last-date-received
+set date_format = "%b %d %H:%M:%S"
+set index_format = "%4C %Z %d %-15.15L %s"
+set pager_index_lines = 20
 
 set realname = 'Sebastian Pleschko'
 set from = 's.pleschko@rewe-group.at'

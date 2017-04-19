@@ -24,7 +24,7 @@ URxvt*scrollBar:  			false
 ! URxvt*scrollTtyKeypress:              boolean
 ! URxvt*scrollWithBuffer:               boolean
 ! URxvt*inheritPixmap:                  boolean
-! URxvt*transparent:                    boolean
+! URxvt*transparent:                      true
 ! URxvt*tintColor:                      color
 ! URxvt*shading:                        number
 ! URxvt*blurRadius:                     HxV
@@ -41,6 +41,9 @@ URxvt*scrollBar:  			false
 ! URxvt*cursorUnderline:                boolean
 ! URxvt*cursorBlink:                    boolean
 ! URxvt*pointerBlank:                   boolean
+xterm*faceName:                         Hack:style=regular:size=13:antialias=true
+xterm*boldFont:                         Hack:style=bold:size=13:antialias=true
+xterm*font:                             7x13
 URxvt*font:                           	xft: Hack:style=regular:size=12
 URxvt*boldFont:                       xft: Hack:style=bold:size=12
 ! URxvt*italicFont:                     fontname
@@ -154,7 +157,7 @@ URxvt*boldFont:                       xft: Hack:style=bold:size=12
 
 *background:              S_base03
 *foreground:              S_base0
-*fading:                  40
+*fading:                  20
 *fadeColor:               S_base03
 *cursorColor:             S_base1
 *pointerColorBackground:  S_base01
@@ -176,3 +179,10 @@ URxvt*boldFont:                       xft: Hack:style=bold:size=12
 *color13:                 S_violet
 *color14:                 S_base1
 *color15:                 S_base3!
+! URxvt clickable URLs etc
+URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
+URxvt.url-select.launcher:  google-chrome-stable
+URxvt.url-select.underline: true
+URxvt.keysym.M-u:           perl:url-select:select_next
+URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+URxvt.keysym.M-s:           perl:keyboard-select:search
