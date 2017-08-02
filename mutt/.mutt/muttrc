@@ -1,6 +1,6 @@
 # Synced Mailboxed
 
-set folder = ~/mail
+set folder = ~/gmail
 set mbox_type = Maildir
 set record = +Sent
 set copy = yes
@@ -21,15 +21,15 @@ set index_format = "%4C %Z %d %-15.15L %s"
 set pager_index_lines = 20
 
 set realname = 'Sebastian Pleschko'
-set from = 's.pleschko@rewe-group.at'
+set from = 'sebastian.pleschko@riag-digital.com'
 set use_from = yes
 
 set edit_headers = yes
-set sendmail="/usr/bin/msmtp -a exchange"
+set sendmail="/usr/bin/msmtp -a gmail"
 
 set editor = vim
 
-source /home/spleschko/.mutt/colors
+# source /home/spleschko/.mutt/colors
 
 set query_command="echo;notmuch address from:'%s*' and not jira and not confluence"
 bind editor <Tab> complete-query

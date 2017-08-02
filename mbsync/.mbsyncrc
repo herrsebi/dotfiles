@@ -1,35 +1,13 @@
-IMAPAccount exchange
-Host saut0018.rewe-aut.1tld.biz
-User REWE-AUT\\AT0697674
-PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.mailpass.gpg"
-SSLType IMAPS
-CertificateFile ~/.rewecert.pem
-
-IMAPAccount exchange-dav
-Host localhost
-Port 1143
-SSLType None
-AuthMechs LOGIN
-User REWE-AUT\\AT0697674
-PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.mailpass.gpg"
-
 IMAPAccount gmail
 Host imap.gmail.com
 Port 993
+SSLType IMAPS
+SSLVersions TLSv1.2
 User sebastian.pleschko@riag-digital.com
-PassCmd "pass Web/google.com"
-
-IMAPStore exchange-remote
-Account exchange-dav
+Pass cksdgbnodreajsdm
 
 IMAPStore gmail-remote
 Account gmail
-
-MaildirStore exchange-local
-Path ~/mail/
-Inbox ~/mail/Inbox
-AltMap no
-Flatten .
 
 MaildirStore gm-local
 Path ~/gmail/
@@ -37,19 +15,11 @@ Inbox ~/gmail/Inbox
 AltMap no
 Flatten .
 
-Channel exchange
-Master :exchange-remote:
-Slave :exchange-local:
-Patterns *
-Create Both
-SyncState *
-Remove Both
-
 Channel gmail
 Master :gmail-remote:
 Slave :gm-local:
-Patterns *
-Create Slave
+Patterns * "!PRTG" "![Gmail]/*" "[Gmail]/Sent Mail" "[Gmail]/Important" "[Gmail]/Trash"
+Create Both
 SyncState *
-Remove Slave
+Remove Both
 
