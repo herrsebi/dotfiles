@@ -1,11 +1,11 @@
 # Synced Mailboxed
 
-set folder = ~/mail
+set folder = ~/.mutt/mailbox/work
 set mbox_type = Maildir
 set record = +Sent
 set copy = yes
-set postponed = +Drafts
-set spoolfile = +Inbox
+set postponed = +drafts
+set spoolfile = +inbox
 set alias_file       = ~/.mutt/alias         # where to store aliases
 set header_cache     = ~/.mutt/cache/headers # where to store headers
 set message_cachedir = ~/.mutt/cache/bodies  # where to store bodies

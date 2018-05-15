@@ -41,8 +41,9 @@ URxvt*scrollBar:  			false
 ! URxvt*cursorUnderline:                boolean
 ! URxvt*cursorBlink:                    boolean
 ! URxvt*pointerBlank:                   boolean
-URxvt*font:                           	xft: Hack:style=regular:size=12
-URxvt*boldFont:                       xft: Hack:style=bold:size=12
+URxvt*font:                           	xft: UbuntuMono:style=regular:size=12
+URxvt*boldFont:                       xft: UbuntuMono:style=bold:size=12
+URxvt*italicFont:                       xft: UbuntuMono:style=italic:size=12
 ! URxvt*italicFont:                     fontname
 ! URxvt*boldItalicFont:                 fontname
 ! URxvt*intensityStyles:                boolean
@@ -76,7 +77,6 @@ URxvt*boldFont:                       xft: Hack:style=bold:size=12
 ! URxvt*secondaryScroll:                boolean
 ! URxvt*perl-lib:                       string
 ! URxvt*perl-eval:                      perl-eval
-! URxvt*perl-ext-common:                string
 ! URxvt*perl-ext:                       string
 ! URxvt*iso14755:                       boolean
 ! URxvt*iso14755_52:                    boolean
@@ -104,7 +104,12 @@ URxvt*boldFont:                       xft: Hack:style=bold:size=12
 ! URxvt*tabbar-bg:                      colour
 ! URxvt*tabbar-fg:                      colour
 ! URxvt*url-launcher:                   string
+
+! keyboard selection mode for the shell
 !
+URxvt*perl-ext-common:                  string,keyboard-select
+URxvt*keysym.M-Escape:			perl:keyboard-select:activate
+URxvt*keysym.M-s:				perl:keyboard-select:search
 !
 ! Solarized Colors:
 !
